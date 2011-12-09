@@ -9,12 +9,34 @@ E.Layout = LO;
 function LO:Initialize()
 	self:CreateChatPanels()
 	self:CreateMinimapPanels()
+	if E.db.core.lowerPanel then self:CreateLowerPanel() end
+	if E.db.core.upperPanel then self:CreateUpperPanel() end
 end
 
 local panel
 local function ChatPanel_OnFade()
 	panel:Hide()
 	panel = nil;
+end
+
+function LO:CreateLowerPanel()
+	local lpanel = CreateFrame('Frame', 'LowerPanel', E.UIParent)
+	lpanel:SetFrameStrata('BACKGROUND')
+	lpanel:Width(E.UIParent:GetWidth() + (E.mult * 2))
+	lpanel:Height(PANEL_HEIGHT)
+	lpanel:Point("BOTTOMLEFT", E.UIParent, "BOTTOMLEFT", -E.mult, -E.mult)
+	lpanel:Point("BOTTOMRIGHT", E.UIParent, "BOTTOMRIGHT", E.mult, -E.mult)
+	lpanel:SetTemplate('Transparent')
+end
+
+function LO:CreateUpperPanel()
+	local upanel = CreateFrame('Frame', 'UpperPanel', E.UIParent)
+	upanel:SetFrameStrata('BACKGROUND')
+	upanel:Width(E.UIParent:GetWidth() + (E.mult * 2))
+	upanel:Height(PANEL_HEIGHT)
+	upanel:Point("TOPLEFT", E.UIParent, "TOPLEFT", -E.mult, E.mult)
+	upanel:Point("TOPRIGHT", E.UIParent, "TOPRIGHT", E.mult, E.mult)
+	upanel:SetTemplate('Transparent')
 end
 
 local function ChatButton_OnEnter(self, ...)

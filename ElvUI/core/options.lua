@@ -277,24 +277,38 @@ E.Options.args.core = {
 								E:UpdateBackdropColors()
 							end,						
 						},
-						backdropfadecolor = {
-							type = "color",
-							order = 3,
-							name = L["Backdrop Faded Color"],
-							desc = L["Backdrop color of transparent frames"],
-							hasAlpha = true,
-							get = function(info)
-								local t = E.db.core[ info[#info] ]
-								return t.r, t.g, t.b, t.a
-							end,
-							set = function(info, r, g, b, a)
-								E.db.core[ info[#info] ] = {}
-								local t = E.db.core[ info[#info] ]	
-								t.r, t.g, t.b, t.a = r, g, b, a
-								E:UpdateMedia()
-								E:UpdateBackdropColors()
-							end,						
-						},
+					lowerPanel = {
+						order = 4,
+						type = 'toggle',
+						name = L['Lower Panel'],
+						desc = L['Enable The Panel Accross The Bottom of the UI.'],
+						set = function(info, value) E.db.core.lowerPanel = value; StaticPopup_Show("CONFIG_RL") end,
+					},
+					upperPanel = {
+						order = 5,
+						type = 'toggle',
+						name = L['Upper Panel'],
+						desc = L['Enable The Panel Accross The Top of UI.'],
+						set = function(info, value) E.db.core.upperPanel = value; StaticPopup_Show("CONFIG_RL") end,
+					},
+					backdropfadecolor = {
+						type = "color",
+						order = 3,
+						name = L["Backdrop Faded Color"],
+						desc = L["Backdrop color of transparent frames"],
+						hasAlpha = true,
+						get = function(info)
+							local t = E.db.core[ info[#info] ]
+							return t.r, t.g, t.b, t.a
+						end,
+						set = function(info, r, g, b, a)
+							E.db.core[ info[#info] ] = {}
+							local t = E.db.core[ info[#info] ]	
+							t.r, t.g, t.b, t.a = r, g, b, a
+							E:UpdateMedia()
+							E:UpdateBackdropColors()
+						end,						
+					},
 						valuecolor = {
 							type = "color",
 							order = 4,

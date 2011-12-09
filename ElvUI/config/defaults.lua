@@ -37,6 +37,9 @@ DF["core"] = {
 	['bags'] = true,
 	['loot'] = true,
 	['lootRoll'] = true,
+	['upperPanel'] = true,
+	['lowerPanel'] = true,
+
 };
 
 --NamePlate
