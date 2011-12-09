@@ -39,6 +39,9 @@ DF["core"] = {
 	['lootRoll'] = true,
 	['upperPanel'] = true,
 	['lowerPanel'] = true,
+	
+	-- sounds
+  ["whisper"] = "ElvUI Whisper",
 
 };
 
